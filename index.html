@@ -14,30 +14,6 @@
             overflow: hidden;
         }
 
-        .intro {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #e6e6e6;
-            font-size: 80px;
-            z-index: 9999;
-            animation: fadeOut 2s ease forwards;
-            animation-delay: 2s;
-        }
-
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-                visibility: hidden;
-            }
-        }
-
         .container,
         .left-box,
         .right-box,
@@ -61,7 +37,7 @@
         .left-box,
         .right-box {
             position: absolute;
-            top: 25px;
+            top: 20%;
             background: rgba(0, 0, 0, 0.8);
             border: 1px solid #333;
             padding: 20px;
@@ -165,12 +141,36 @@
                 opacity: 0.3;
             }
         }
+
+            .marquee {
+        position: absolute;
+        top: 0%;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .marquee span {
+        display: inline-block;
+        font-size: 5em;
+        color: red;
+        text-shadow: 0px 0px 8px red, 0px 0px 15px red, 0px 0px 25px red;
+        letter-spacing: 4.50px;
+        animation: scroll 80s linear infinite;
+    }
+
+    @keyframes scroll {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
     </style>
 </head>
 
 <body>
 
-    <div class="intro">مجلس العرب</div>
+    <div class="marquee">
+        <span>مجلس العرب - مجلس العرب - مجلس العرب - مجلس العرب - مجلس العرب</span>
+    </div>
 
     <div class="left-box">
         مجلس العرب
@@ -194,28 +194,13 @@
     </div>
 
     <audio autoplay="" loop="">
-        <source src="https://cdn.discordapp.com/attachments/1379951981988417718/1401263150187286528/Edit_Yakir_ganon_-_Dia_Baba.mp3?ex=688fa381&is=688e5201&hm=adf438445f1905436cbafb72ee88d4f0a0a226c49c3fb1eac058bfca149b08f3&" type="audio/mpeg">
+        <source src="https://cdn.discordapp.com/attachments/1379951981988417718/1401454360323555379/2020____.mp3?ex=68905595&is=688f0415&hm=4462237fe5b1e803d1998d54ffe36fde5ba6593cacc86fd900eb26941eac4a66&" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
     <div class="container">
         <img class="anime-image" src="https://www.raed.net/img?id=1394587" alt="Anime">
         <div class="title">مجلس العرب</div>
-
-        <div class="box">
-            <div style="border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;">
-                <span style="color: #ccc; font-weight: bold;"></span>
-            </div>
-            <div style="color: #888; font-size: 14px; margin-bottom: 8px;">
-                server@system:~$ <strong>why?</strong>
-            </div>
-            <div style="color: #9b0000; font-size: 16px; line-height: 1.6;">
-                مجلس العرب
-                <div style="color: #888; font-size: 12px; margin-top: 8px;">
-                </div>
-            </div>
-            <div class="footer">OFFICALY BLACK$HAMMER • </div>
-        </div>
 
         <script>
             // ! اظهار الايبي !
